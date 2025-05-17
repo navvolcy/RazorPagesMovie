@@ -12,6 +12,7 @@ namespace RazorPagesMovie.Pages.Movies
 {
     public class IndexModel : PageModel
     {
+        //using dependency injection to get the database context
         private readonly RazorPagesMovie.Data.RazorPagesMovieContext _context;
 
         public IndexModel(RazorPagesMovie.Data.RazorPagesMovieContext context)
@@ -19,8 +20,10 @@ namespace RazorPagesMovie.Pages.Movies
             _context = context;
         }
 
+        //list of movies to get from the database 
         public IList<Movie> Movie { get;set; } = default!;
 
+        //gets the list of movies from the database and displays them on the page
         public async Task OnGetAsync()
         {
             Movie = await _context.Movie.ToListAsync();
