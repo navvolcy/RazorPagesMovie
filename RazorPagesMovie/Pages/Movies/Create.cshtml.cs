@@ -24,13 +24,13 @@ namespace RazorPagesMovie.Pages.Movies
         {
             return Page();
         }
-
+        //opt-in to model binding
         [BindProperty]
         public Movie Movie { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
 
-        
+        // runs when the page posts form data
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
